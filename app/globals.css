@@ -1,0 +1,21 @@
+:root {
+  --bg: #ffffff;
+  --fg: #111827;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+main {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
