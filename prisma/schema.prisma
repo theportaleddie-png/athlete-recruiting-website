@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String   @id @default(uuid())
+  email            String   @unique
+  emailVerifiedAt  DateTime?
+  passwordHash     String?
+  role             UserRole @default(athlete)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  Athlete          Athlete?
+  teamsOwned       Team[]   @relation("teamOwner")
+}
+
+enum UserRole {
+  athlete
+  coach
+  admin
+}
+
+model Athlete {
+  id              String   @id @default(uuid())
+  userId          String?  @unique
+  user            User?    @relation(fields: [userId], references: [id])
+  firstName       String
+  lastName        String
+  gradYear        Int?
+  sport           String?
+  position        String?
+  school          String?
+  jerseyNumber    String?
+  profilePhotoUrl String?
+  bio             String?
+  metadata        Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  rosterMemberships RosterMembership[]
+}
+
+model Team {
+  id          String   @id @default(uuid())
+  name        String
+  ownerUserId String?
+  owner       User?    @relation("teamOwner", fields: [ownerUserId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  roster      RosterMembership[]
+  invitations Invitation[]
+}
+
+model RosterMembership {
+  id           String    @id @default(uuid())
+  athleteId    String
+  athlete      Athlete   @relation(fields: [athleteId], references: [id])
+  teamId       String
+  team         Team      @relation(fields: [teamId], references: [id])
+  addedById    String
+  addedBy      User      @relation(fields: [addedById], references: [id])
+  status       MembershipStatus @default(invited)
+  invitedAt    DateTime  @default(now())
+  claimedAt    DateTime?
+  acceptedAt   DateTime?
+  declinedAt   DateTime?
+  removedAt    DateTime?
+  expiresAt    DateTime?
+  invitationId String?
+  invitation   Invitation? @relation(fields: [invitationId], references: [id])
+  @@unique([athleteId, teamId])
+}
+
+enum MembershipStatus {
+  invited
+  pending
+  claimed
+  active
+  declined
+  removed
+  expired
+}
+
+model Invitation {
+  id           String   @id @default(uuid())
+  email        String
+  tokenHash    String
+  teamId       String
+  team         Team     @relation(fields: [teamId], references: [id])
+  invitedById  String
+  invitedBy    User     @relation(fields: [invitedById], references: [id])
+  athleteSnapshot Json?
+  status       InvitationStatus @default(sent)
+  sentAt       DateTime?
+  deliveredAt  DateTime?
+  openedAt     DateTime?
+  clickedAt    DateTime?
+  claimedAt    DateTime?
+  expiresAt    DateTime?
+  attempts     Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  @@index([email])
+}
+
+enum InvitationStatus {
+  sent
+  delivered
+  opened
+  clicked
+  claimed
+  accepted
+  declined
+  expired
+  failed
+}
