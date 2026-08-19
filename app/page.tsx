@@ -1,8 +1,21 @@
+import { SiteNav } from "@/components/landing/site-nav"
+import { Hero } from "@/components/landing/hero"
+import { PowerOn } from "@/components/landing/power-on"
+import { HowItWorks } from "@/components/landing/how-it-works"
+import { ForCoaches } from "@/components/landing/for-coaches"
+import { CtaFooter } from "@/components/landing/cta-footer"
+
 export default function Page() {
   return (
-    <main style={{ fontFamily: 'system-ui, sans-serif', padding: 24 }}>
-      <h1>Welcome to Next.js (App Router)</h1>
-      <p>This is a minimal TypeScript app committed by GitHub Copilot.</p>
-    </main>
-  );
+    <div className="min-h-dvh bg-background text-foreground">
+      <SiteNav />
+      <main>
+        <Hero />
+        <PowerOn />
+        <HowItWorks />
+        <ForCoaches />
+        <CtaFooter />
+      </main>
+    </div>
+  )
 }
