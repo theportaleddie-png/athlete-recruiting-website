@@ -1,15 +1,11 @@
-import './globals.css';
-import type { ReactNode } from 'react';
+import './globals.css'
+import type { ReactNode } from 'react'
 
 export const metadata = {
-  title: 'Next.js App',
-  description: 'Minimal Next.js app',
-};
+  title: 'thePORTAL · Athlete recruiting network',
+  description: 'Discover verified athlete profiles, performance data, and potential with thePORTAL.',
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+  return <html lang="en" className="app-background"><body>{children}</body></html>
 }
