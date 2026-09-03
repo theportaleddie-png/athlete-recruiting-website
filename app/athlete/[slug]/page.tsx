@@ -4,8 +4,9 @@ import { getAthlete, athletes } from '@/lib/athletes'
 
 export function generateStaticParams() { return athletes.map(({ slug }) => ({ slug })) }
 
-export default async function AthleteProfile({ params }: { params: { slug: string } }) {
-  const athlete = getAthlete(params.slug)
+export default async function AthleteProfile({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const athlete = getAthlete(slug)
   if (!athlete) notFound()
   return <main className="profile-shell">
     <nav className="nav"><Link href="/" className="brand"><span className="brand-mark">+</span> the<span>PORTAL</span></Link><Link href="/" className="back-link">← Back to directory</Link></nav>
@@ -16,4 +17,8 @@ export default async function AthleteProfile({ params }: { params: { slug: strin
   </main>
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) { const athlete = getAthlete(params.slug); return { title: athlete ? `${athlete.name} · thePORTAL` : 'Athlete not found', description: athlete?.summary } }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const athlete = getAthlete(slug)
+  return { title: athlete ? `${athlete.name} · thePORTAL` : 'Athlete not found', description: athlete?.summary }
+}
