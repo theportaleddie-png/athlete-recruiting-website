@@ -1,0 +1,51 @@
+export type Trainer = {
+  id: string
+  name: string
+  photo: string
+  verified: boolean
+  sports: string[]
+  location: string
+  latitude: number
+  longitude: number
+  yearsExperience: number
+  playingExperience?: string
+  specialties: string[]
+  ageGroups: string[]
+  trainingFormats: string[]
+  bio: string
+  philosophy: string
+  profileUrl: string
+}
+
+export const sports = ['All Sports', 'Basketball', 'Soccer', 'Football', 'Volleyball', 'Hockey', "Women's Flag Football"]
+export const specialties = ['All specialties', 'Technical Development', 'Speed & Agility', 'Strength & Conditioning', 'Position Training', 'Mental Performance', 'Recruiting Preparation', 'Leadership']
+export const ageGroups = ['All ages', 'Youth', 'Middle school', 'High school', 'College', 'Pro']
+export const trainingFormats = ['All formats', 'In-person', 'Small group', 'Virtual', 'Camps']
+
+export const trainers: Trainer[] = [
+  { id: 'maya-williams', name: 'Maya Williams', photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Basketball'], location: 'Los Angeles, CA', latitude: 34.05, longitude: -118.24, yearsExperience: 12, playingExperience: 'WNBA development program', specialties: ['Basketball Skills', 'Technical Development', 'Mental Performance'], ageGroups: ['High school', 'College', 'Pro'], trainingFormats: ['In-person', 'Small group', 'Camps'], bio: 'Guard development built around confidence, reads, and repeatable habits.', philosophy: 'Make the game feel slower by making the work more intentional.', profileUrl: '/trainers/maya-williams' },
+  { id: 'marcus-lee', name: 'Marcus Lee', photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Football'], location: 'Dallas, TX', latitude: 32.78, longitude: -96.8, yearsExperience: 15, playingExperience: 'Former collegiate safety', specialties: ['Speed & Agility', 'Position Training', 'Leadership'], ageGroups: ['Middle school', 'High school', 'College'], trainingFormats: ['In-person', 'Small group'], bio: 'Position-specific football training for athletes ready to separate.', philosophy: 'Details create distance. We train the details every session.', profileUrl: '/trainers/marcus-lee' },
+  { id: 'sofia-ramirez', name: 'Sofia Ramirez', photo: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Soccer'], location: 'Miami, FL', latitude: 25.76, longitude: -80.19, yearsExperience: 10, playingExperience: 'USL W League', specialties: ['Soccer Development', 'Technical Development', 'Recruiting Preparation'], ageGroups: ['Youth', 'Middle school', 'High school'], trainingFormats: ['In-person', 'Camps'], bio: 'Technical soccer development that gives young players more ways to solve the game.', philosophy: 'Creative players are made through permission, repetition, and play.', profileUrl: '/trainers/sofia-ramirez' },
+  { id: 'devon-price', name: 'Devon Price', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Basketball', 'Volleyball'], location: 'Chicago, IL', latitude: 41.88, longitude: -87.63, yearsExperience: 9, playingExperience: 'NCAA Division I athlete', specialties: ['Strength & Conditioning', 'Performance', 'Speed & Agility'], ageGroups: ['High school', 'College', 'Pro'], trainingFormats: ['In-person', 'Virtual', 'Small group'], bio: 'Performance coaching for athletes who want to move better and compete longer.', philosophy: 'Build a body that lets your skill show up on demand.', profileUrl: '/trainers/devon-price' },
+  { id: 'jordan-brooks', name: 'Jordan Brooks', photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=160&q=80', verified: false, sports: ["Women's Flag Football", 'Football'], location: 'Atlanta, GA', latitude: 33.75, longitude: -84.39, yearsExperience: 8, playingExperience: 'Former collegiate quarterback', specialties: ['Position Training', 'Leadership', 'Recruiting Preparation'], ageGroups: ['Youth', 'Middle school', 'High school'], trainingFormats: ['In-person', 'Camps'], bio: 'Quarterback and flag football development centered on decision-making.', philosophy: 'Lead with clarity, play with freedom.', profileUrl: '/trainers/jordan-brooks' },
+  { id: 'aiden-chen', name: 'Aiden Chen', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Volleyball'], location: 'Seattle, WA', latitude: 47.61, longitude: -122.33, yearsExperience: 11, playingExperience: 'Professional indoor volleyball', specialties: ['Technical Development', 'Speed & Agility', 'Mental Performance'], ageGroups: ['Middle school', 'High school', 'College'], trainingFormats: ['In-person', 'Virtual'], bio: 'Volleyball skill development for athletes building an elite foundation.', philosophy: 'Your best reps are the ones you can repeat under pressure.', profileUrl: '/trainers/aiden-chen' },
+  { id: 'nina-petrov', name: 'Nina Petrov', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Hockey'], location: 'Boston, MA', latitude: 42.36, longitude: -71.06, yearsExperience: 14, playingExperience: 'NCAA Division I hockey', specialties: ['Technical Development', 'Strength & Conditioning', 'Leadership'], ageGroups: ['Youth', 'High school', 'College'], trainingFormats: ['In-person', 'Small group', 'Camps'], bio: 'Skating, edgework, and game IQ for hockey players at every stage.', philosophy: 'Effort is a skill. We make it part of the plan.', profileUrl: '/trainers/nina-petrov' },
+  { id: 'eli-thompson', name: 'Eli Thompson', photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80', verified: false, sports: ['Soccer'], location: 'Denver, CO', latitude: 39.74, longitude: -104.99, yearsExperience: 7, playingExperience: 'MLS Next coach', specialties: ['Soccer Development', 'Speed & Agility'], ageGroups: ['Youth', 'Middle school', 'High school'], trainingFormats: ['In-person', 'Small group'], bio: 'Modern soccer training for players who want to own their next action.', philosophy: 'Awareness first. Speed follows.', profileUrl: '/trainers/eli-thompson' },
+  { id: 'camila-ortiz', name: 'Camila Ortiz', photo: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Basketball'], location: 'New York, NY', latitude: 40.71, longitude: -74.01, yearsExperience: 13, playingExperience: 'WNBA assistant coach', specialties: ['Basketball Skills', 'Recruiting Preparation', 'Mental Performance'], ageGroups: ['High school', 'College', 'Pro'], trainingFormats: ['In-person', 'Virtual', 'Camps'], bio: 'High-level basketball development and recruiting clarity for serious athletes.', philosophy: 'The right preparation makes confidence visible.', profileUrl: '/trainers/camila-ortiz' },
+  { id: 'ray-jackson', name: 'Ray Jackson', photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80', verified: false, sports: ['Football'], location: 'Houston, TX', latitude: 29.76, longitude: -95.37, yearsExperience: 10, playingExperience: 'Former collegiate linebacker', specialties: ['Strength & Conditioning', 'Performance', 'Position Training'], ageGroups: ['Middle school', 'High school', 'College'], trainingFormats: ['In-person', 'Small group'], bio: 'Build the strength, speed, and habits that travel to game day.', philosophy: 'Consistency is the competitive advantage.', profileUrl: '/trainers/ray-jackson' },
+  { id: 'taylor-reed', name: 'Taylor Reed', photo: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=160&q=80', verified: true, sports: ["Women's Flag Football"], location: 'Charlotte, NC', latitude: 35.23, longitude: -80.84, yearsExperience: 8, playingExperience: 'National flag football coach', specialties: ["Women's Flag Football", 'Leadership', 'Recruiting Preparation'], ageGroups: ['Youth', 'Middle school', 'High school', 'College'], trainingFormats: ['In-person', 'Camps', 'Virtual'], bio: 'Helping the next generation of flag football athletes take up space.', philosophy: 'Confidence is trained, not granted.', profileUrl: '/trainers/taylor-reed' },
+  { id: 'kai-morgan', name: 'Kai Morgan', photo: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=160&q=80', verified: true, sports: ['Soccer'], location: 'San Diego, CA', latitude: 32.72, longitude: -117.16, yearsExperience: 12, playingExperience: 'USL Championship', specialties: ['Soccer Development', 'Technical Development', 'Performance'], ageGroups: ['High school', 'College'], trainingFormats: ['In-person', 'Small group'], bio: 'Technical and tactical soccer work for athletes chasing their next level.', philosophy: 'Train the player, not just the position.', profileUrl: '/trainers/kai-morgan' },
+]
+
+export const mapBounds = { minLat: 24, maxLat: 49, minLng: -124, maxLng: -67 }
+
+export function trainerMatches(trainer: Trainer, query: string, sport: string, specialty: string, ageGroup: string, format: string, verifiedOnly: boolean) {
+  const haystack = [trainer.name, trainer.location, trainer.bio, trainer.playingExperience, ...trainer.sports, ...trainer.specialties].join(' ').toLowerCase()
+  return (!query || haystack.includes(query.toLowerCase())) && (sport === 'All Sports' || trainer.sports.includes(sport)) && (specialty === 'All specialties' || trainer.specialties.includes(specialty)) && (ageGroup === 'All ages' || trainer.ageGroups.includes(ageGroup)) && (format === 'All formats' || trainer.trainingFormats.includes(format)) && (!verifiedOnly || trainer.verified)
+}
+
+export function cityToPercent(latitude: number, longitude: number) {
+  return { left: ((longitude - mapBounds.minLng) / (mapBounds.maxLng - mapBounds.minLng)) * 100, top: (1 - (latitude - mapBounds.minLat) / (mapBounds.maxLat - mapBounds.minLat)) * 100 }
+}
+
+export function getTrainer(id: string) { return trainers.find((trainer) => trainer.id === id) ?? trainers[0] }
