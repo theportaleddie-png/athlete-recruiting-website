@@ -1,9 +1,31 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+generator client {
+  provider = "prisma-client-js"
+}
 
-enum UserRole { athlete coach trainer admin }
-enum VerificationStatus { unverified pending verified }
-enum TrainerApplicationStatus { submitted under_review approved rejected }
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+enum UserRole {
+  athlete
+  coach
+  trainer
+  admin
+}
+
+enum VerificationStatus {
+  unverified
+  pending
+  verified
+}
+
+enum TrainerApplicationStatus {
+  submitted
+  under_review
+  approved
+  rejected
+}
 
 model User {
   id String @id @default(uuid())
