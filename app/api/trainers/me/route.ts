@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '../../../../../lib/prisma'
-import { currentUser, forbidden, unauthorized } from '../../../../../lib/auth'
+import { prisma } from '../../../../lib/prisma'
+import { currentUser, forbidden, unauthorized } from '../../../../lib/auth'
 const allowed = ['firstName','lastName','displayName','profilePhotoUrl','sports','specialties','yearsExperience','playingExperience','coachingExperience','bio','certifications','city','state','country','latitude','longitude']
 export async function GET() { const user = await currentUser(); if (!user) return unauthorized(); if (user.role !== 'trainer') return forbidden(); const profile = await prisma.trainer.findUnique({ where: { userId: user.id } }); return profile ? NextResponse.json({ profile }) : NextResponse.json({ error: 'profile-not-found' }, { status: 404 }) }
 export async function PUT(request: Request) { const user = await currentUser(); if (!user) return unauthorized(); if (user.role !== 'trainer') return forbidden(); try { const existing = await prisma.trainer.findUnique({ where: { userId: user.id } }); if (!existing) return NextResponse.json({ error: 'profile-not-found' }, { status: 404 }); const body = await request.json(); const data: Record<string, unknown> = {}; for (const key of allowed) if (key in body) data[key] = body[key]; if (typeof data.yearsExperience === 'string') data.yearsExperience = Number(data.yearsExperience) || null; return NextResponse.json({ profile: await prisma.trainer.update({ where: { userId: user.id }, data: data as never }) }) } catch { return NextResponse.json({ error: 'Invalid trainer profile data.' }, { status: 400 }) } }
