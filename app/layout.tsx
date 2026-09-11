@@ -1,4 +1,5 @@
 import './globals.css';
+import './campaign.css';
 import type { ReactNode } from 'react';
 
 export const metadata = {
