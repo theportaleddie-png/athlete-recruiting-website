@@ -8,6 +8,7 @@ export default function Page() {
           the<span>PORTAL</span>
         </Link>
         <div className="nav-links">
+          <Link href="/player-card">Build your Player Card</Link>
           <a href="#platform">Platform</a>
           <a href="#why-us">Why thePORTAL</a>
           <Link className="nav-cta" href="/book-demo">Request demo <span aria-hidden="true">↗</span></Link>
