@@ -1,58 +1,14 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import { SiteFooter, SiteNav } from '../components/site-chrome'
 
 export default function Page() {
-  return (
-    <main className="site-shell">
-      <nav className="nav" aria-label="Main navigation">
-        <Link className="brand" href="/">
-          the<span>PORTAL</span>
-        </Link>
-        <div className="nav-links">
-          <a href="#platform">Platform</a>
-          <a href="#why-us">Why thePORTAL</a>
-          <Link className="nav-cta" href="/book-demo">Request demo <span aria-hidden="true">↗</span></Link>
-        </div>
-      </nav>
-
-      <section className="hero" aria-labelledby="hero-heading">
-        <div className="hero-copy">
-          <p className="eyebrow">The athlete recruiting platform</p>
-          <h1 id="hero-heading">Your next level<br /><em>starts here.</em></h1>
-          <p className="hero-description">thePORTAL brings athletes, coaches, and opportunity together in one place—so every player can power on.</p>
-          <div className="hero-actions">
-            <Link className="button button-primary" href="/book-demo">Request a demo <span aria-hidden="true">↗</span></Link>
-            <a className="text-link" href="#platform">Explore the platform <span aria-hidden="true">↓</span></a>
-          </div>
-        </div>
-        <div className="hero-art" aria-label="Athlete profile preview">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="profile-card">
-            <div className="profile-top"><span className="status-dot" /> ATHLETE PROFILE <span>•••</span></div>
-            <div className="avatar">AM</div>
-            <p className="profile-name">Alex Morgan</p>
-            <p className="profile-meta">Guard · Class of 2027</p>
-            <div className="profile-stats"><span><strong>3.8</strong><small>GPA</small></span><span><strong>24</strong><small>PPG</small></span><span><strong>14</strong><small>Offers</small></span></div>
-            <div className="profile-bar"><span /></div>
-            <p className="profile-footer">Profile strength <strong>92%</strong></p>
-          </div>
-          <div className="floating-note note-top">PERFORMANCE <strong>+28%</strong></div>
-          <div className="floating-note note-bottom">MENTORSHIP <strong>ACTIVE</strong></div>
-        </div>
-      </section>
-
-      <section className="pillars" id="platform" aria-label="Platform pillars">
-        <div><span>01</span><h2>Education</h2><p>Build the foundation for what comes next.</p></div>
-        <div><span>02</span><h2>Performance</h2><p>Turn your work into a profile that gets seen.</p></div>
-        <div><span>03</span><h2>Mentorship</h2><p>Get guidance from people who have been there.</p></div>
-        <div><span>04</span><h2>Networking</h2><p>Connect with the right people at the right time.</p></div>
-      </section>
-
-      <section className="closing" id="why-us">
-        <p className="eyebrow">One platform. More possibility.</p>
-        <h2>Make your next move<br /><em>your best one.</em></h2>
-        <Link className="button button-dark" href="/book-demo">See how it works <span aria-hidden="true">↗</span></Link>
-      </section>
-    </main>
-  );
+  return <main className="campaign-page"><SiteNav />
+    <section className="campaign-hero"><div className="campaign-hero-image" /><div className="campaign-hero-copy"><p className="eyebrow">The athlete ecosystem, connected</p><h1>Your game.<br /><em>Your future.</em></h1><p>thePORTAL is the digital infrastructure for serious athletes, modern programs, and the people moving the game forward.</p><div className="hero-actions"><Link className="button button-primary" href="/player-card">Build your Player Card <span>↗</span></Link><Link className="button button-ghost" href="/book-demo">See thePORTAL <span>→</span></Link></div></div><div className="hero-rail"><span>ATHLETES</span><span>COACHES</span><span>TRAINERS</span><span>OPPORTUNITY</span></div></section>
+    <section className="campaign-intro" id="about"><p className="eyebrow">Not another recruiting website</p><h2>Built for athletes<br />who are <em>going somewhere.</em></h2><p>One connected place to own your story, show your work, build trusted relationships, and be ready for what comes next.</p></section>
+    <section className="campaign-feature athlete-feature"><div className="feature-image athlete-image" /><div className="feature-copy"><p className="eyebrow">01 — Athlete identity</p><h2>Build your<br /><em>Player Card.</em></h2><p>One professional profile for your game, academics, achievements, film, and goals. Free to build. Yours to own.</p><Link className="button button-primary" href="/player-card">Build it free <span>↗</span></Link></div></section>
+    <section className="campaign-feature coach-feature"><div className="feature-copy"><p className="eyebrow">02 — Modern programs</p><h2>Stop managing your roster in <em>five different places.</em></h2><p>Player profiles, evaluations, staff collaboration, and program operations—connected around the athletes who matter most.</p><Link className="button button-light" href="/book-demo">Request a demo <span>↗</span></Link></div><div className="product-stack"><div><small>ROSTER / 24</small><b>One clear view of your program.</b></div><div><small>PLAYER PROFILE</small><b>Context that travels with every athlete.</b></div><div><small>STAFF NOTES</small><b>Built for aligned decisions.</b></div></div></section>
+    <section className="campaign-feature trainer-feature"><div className="feature-image trainer-image" /><div className="feature-copy"><p className="eyebrow">03 — Preferred Trainer Network</p><h2>Train with people who <em>know the game.</em></h2><p>Discover trusted former athletes and development specialists who help serious athletes get better.</p><Link className="button button-primary" href="/trainers">Explore trainers <span>↗</span></Link></div></section>
+    <section className="campaign-values"><p className="eyebrow">One system. More possibility.</p><div><article><span>01</span><h3>Performance</h3><p>Make the work visible.</p></article><article><span>02</span><h3>Academics</h3><p>Build the foundation.</p></article><article><span>03</span><h3>Mentorship</h3><p>Find your people.</p></article><article id="brands"><span>04</span><h3>Brand fit</h3><p>Connect with intention.</p></article></div></section>
+    <section className="campaign-close"><p className="eyebrow">Make the next move yours</p><h2>Don&apos;t just get recruited.<br /><em>Get ready.</em></h2><Link className="button button-primary" href="/player-card">Build your Player Card <span>↗</span></Link></section><SiteFooter />
+  </main>
 }
