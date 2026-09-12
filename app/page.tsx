@@ -1,8 +1,14 @@
+import Link from 'next/link'
+import { SiteFooter, SiteNav } from '../components/site-chrome'
+
 export default function Page() {
-  return (
-    <main style={{ fontFamily: 'system-ui, sans-serif', padding: 24 }}>
-      <h1>Welcome to Next.js (App Router)</h1>
-      <p>This is a minimal TypeScript app committed by GitHub Copilot.</p>
-    </main>
-  );
+  return <main className="campaign-page"><SiteNav />
+    <section className="campaign-hero"><div className="campaign-hero-image" /><div className="campaign-hero-copy"><p className="eyebrow">The athlete ecosystem, connected</p><h1>Your game.<br /><em>Your future.</em></h1><p>thePORTAL is the digital infrastructure for serious athletes, modern programs, and the people moving the game forward.</p><div className="hero-actions"><Link className="button button-primary" href="/player-card">Build your Player Card <span>↗</span></Link><Link className="button button-ghost" href="/book-demo">See thePORTAL <span>→</span></Link></div></div><div className="hero-rail"><span>ATHLETES</span><span>COACHES</span><span>TRAINERS</span><span>OPPORTUNITY</span></div></section>
+    <section className="campaign-intro" id="about"><p className="eyebrow">Not another recruiting website</p><h2>Built for athletes<br />who are <em>going somewhere.</em></h2><p>One connected place to own your story, show your work, build trusted relationships, and be ready for what comes next.</p></section>
+    <section className="campaign-feature athlete-feature"><div className="feature-image athlete-image" /><div className="feature-copy"><p className="eyebrow">01 — Athlete identity</p><h2>Build your<br /><em>Player Card.</em></h2><p>One professional profile for your game, academics, achievements, film, and goals. Free to build. Yours to own.</p><Link className="button button-primary" href="/player-card">Build it free <span>↗</span></Link></div></section>
+    <section className="campaign-feature coach-feature"><div className="feature-copy"><p className="eyebrow">02 — Modern programs</p><h2>Stop managing your roster in <em>five different places.</em></h2><p>Player profiles, evaluations, staff collaboration, and program operations—connected around the athletes who matter most.</p><Link className="button button-light" href="/book-demo">Request a demo <span>↗</span></Link></div><div className="product-stack"><div><small>ROSTER / 24</small><b>One clear view of your program.</b></div><div><small>PLAYER PROFILE</small><b>Context that travels with every athlete.</b></div><div><small>STAFF NOTES</small><b>Built for aligned decisions.</b></div></div></section>
+    <section className="campaign-feature trainer-feature"><div className="feature-image trainer-image" /><div className="feature-copy"><p className="eyebrow">03 — Preferred Trainer Network</p><h2>Train with people who <em>know the game.</em></h2><p>Discover trusted former athletes and development specialists who help serious athletes get better.</p><Link className="button button-primary" href="/trainers">Explore trainers <span>↗</span></Link></div></section>
+    <section className="campaign-values"><p className="eyebrow">One system. More possibility.</p><div><article><span>01</span><h3>Performance</h3><p>Make the work visible.</p></article><article><span>02</span><h3>Academics</h3><p>Build the foundation.</p></article><article><span>03</span><h3>Mentorship</h3><p>Find your people.</p></article><article id="brands"><span>04</span><h3>Brand fit</h3><p>Connect with intention.</p></article></div></section>
+    <section className="campaign-close"><p className="eyebrow">Make the next move yours</p><h2>Don&apos;t just get recruited.<br /><em>Get ready.</em></h2><Link className="button button-primary" href="/player-card">Build your Player Card <span>↗</span></Link></section><SiteFooter />
+  </main>
 }

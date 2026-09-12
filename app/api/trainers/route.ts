@@ -1,0 +1,4 @@
+import { NextResponse } from 'next/server'
+import { prisma } from '../../../lib/prisma'
+import { publicTrainer } from '../../../lib/profiles'
+export async function GET(request: Request) { const url = new URL(request.url); const q = url.searchParams.get('q')?.trim(); const sport = url.searchParams.get('sport'); const specialty = url.searchParams.get('specialty'); const trainers = await prisma.trainer.findMany({ where: { applicationStatus: 'approved', profilePublished: true, ...(sport ? { sports: { has: sport } } : {}), ...(specialty ? { specialties: { has: specialty } } : {}), ...(q ? { OR: [{ displayName: { contains: q, mode: 'insensitive' } }, { city: { contains: q, mode: 'insensitive' } }, { sports: { has: q } }, { specialties: { has: q } }] } : {}) }, orderBy: [{ featured: 'desc' }, { displayName: 'asc' }], take: 100 }); return NextResponse.json({ trainers: trainers.map(publicTrainer) }) }

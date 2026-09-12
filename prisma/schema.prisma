@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+enum UserRole {
+  athlete
+  coach
+  trainer
+  admin
+}
+
+enum VerificationStatus {
+  unverified
+  pending
+  verified
+}
+
+enum TrainerApplicationStatus {
+  submitted
+  under_review
+  approved
+  rejected
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  passwordHash String?
+  role UserRole @default(athlete)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  athlete Athlete?
+  trainer Trainer?
+}
+
+model Athlete {
+  id String @id @default(uuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName String
+  lastName String
+  slug String @unique
+  profilePhotoUrl String?
+  primarySport String?
+  positions String[] @default([])
+  jerseyNumber String?
+  height String?
+  weight String?
+  graduationYear Int?
+  city String?
+  state String?
+  country String?
+  preferredContactMethod String?
+  dominantHandOrFoot String?
+  athleticStrengths String[] @default([])
+  bio String?
+  school String?
+  gpa Float?
+  gpaScale Float?
+  academicInterests String[] @default([])
+  intendedMajor String?
+  academicAchievements String[] @default([])
+  academicVerificationStatus VerificationStatus @default(unverified)
+  hudlUrl String?
+  highlightVideoUrl String?
+  socialLinks Json?
+  experiences Json?
+  achievements Json?
+  trainingExperience Json?
+  profileCompletion Int @default(0)
+  published Boolean @default(false)
+  verificationStatus VerificationStatus @default(unverified)
+  poweredOnStatus VerificationStatus @default(unverified)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Trainer {
+  id String @id @default(uuid())
+  userId String? @unique
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  firstName String
+  lastName String
+  displayName String
+  slug String @unique
+  profilePhotoUrl String?
+  sports String[] @default([])
+  specialties String[] @default([])
+  yearsExperience Int?
+  playingExperience String?
+  coachingExperience String?
+  bio String?
+  certifications String[] @default([])
+  city String
+  state String?
+  country String @default("US")
+  latitude Float
+  longitude Float
+  verified Boolean @default(false)
+  featured Boolean @default(false)
+  applicationStatus TrainerApplicationStatus @default(submitted)
+  profilePublished Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

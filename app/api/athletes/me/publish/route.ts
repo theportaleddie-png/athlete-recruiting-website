@@ -1,0 +1,5 @@
+import { NextResponse } from 'next/server'
+import { prisma } from '../../../../../lib/prisma'
+import { athleteCompletion } from '../../../../../lib/profiles'
+import { currentUser, forbidden, unauthorized } from '../../../../../lib/auth'
+export async function POST() { const user = await currentUser(); if (!user) return unauthorized(); if (user.role !== 'athlete') return forbidden(); const profile = await prisma.athlete.findUnique({ where: { userId: user.id } }); if (!profile) return NextResponse.json({ error: 'profile-not-found' }, { status: 404 }); const completion = athleteCompletion(profile); if (!profile.firstName || !profile.lastName || !profile.primarySport) return NextResponse.json({ error: 'Add your name and sport before publishing.' }, { status: 400 }); const published = await prisma.athlete.update({ where: { userId: user.id }, data: { published: true, profileCompletion: completion } }); return NextResponse.json({ profile: published, publicUrl: `/athletes/${published.slug}` }) }
